@@ -1,0 +1,173 @@
+<head>
+    <title>CHT_KIT</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+
+    <link href="bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+{{> measurement}}
+<!--{{> info}}-->
+</body>
+
+<template name="measurement">
+    {{> sAlert}}
+    <!-- Page Content -->
+    <div class="navbar-header">
+        <h1 class="my-4">CHT KIT
+            <small>Hệ thống cảnh báo nhiệt độ, độ ẩm đất cho rau củ, cảnh báo nồng độ khí CO cho người dân</small>
+        </h1>
+    </div>
+    <div class="container main">
+        <!-- Project One -->
+        <div class="row">
+            <div class="col-md-5">
+                <div class="row">
+                    <h3 class="col-sm-4">Nhiệt độ</h3>
+                </div>
+                <div class="row">
+                    <select class="form-control input-text" id="temperatureSelection" name="temperatureSelection">
+                        <option value="real-time">Thời gian thực</option>
+                        <option value="hourly">Theo giờ</option>
+                        <option value="daily">Theo ngày</option>
+
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <canvas id="temperatureCanvas"></canvas>
+            </div>
+        </div>
+        <!-- /.row -->
+        <hr>
+
+        <!-- Project Two -->
+        <div class="row">
+            <div class="col-md-5">
+                <div class="row">
+                    <h3 class="col-sm-4">Độ ẩm đất</h3>
+                </div>
+                <div class="row">
+                    <select class="form-control input-text" id="groundHumiditySelection"
+                            name="groundHumiditySelection">
+                        <option value="real-time">Thời gian thực</option>
+                        <option value="hourly">Theo giờ</option>
+                        <option value="daily">Theo ngày</option>
+
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <canvas id="groundHumidityCanvas"></canvas>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Project Three -->
+        <div class="row">
+            <div class="col-md-5">
+                <div class="row">
+                    <h3 class="col-sm-4">Nồng độ khí CO</h3>
+                </div>
+                <div class="row">
+                    <select class="form-control input-text" id="COSelection" name="COSelection">
+                        <option value="real-time">Thời gian thực</option>
+                        <option value="hourly">Theo giờ</option>
+                        <option value="daily">Theo ngày</option>
+
+                    </select>
+                </div>
+
+            </div>
+            <div class="col-md-7">
+                <canvas id="COCanvas"></canvas>
+            </div>
+        </div>
+        <hr>
+        <!-- /.row -->
+
+    </div>
+    <hr>
+    <div class="container enter-mail-div">
+        <div class="row">
+            <form method="post">
+                <div class="form-group" id="subscribe-form">
+                    <h3>Nhập email của bạn để nhận cảnh báo từ CHT_KIT</h3>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="enterMail" value=""/>
+                    </div>
+                    <div class="col-md-3">
+                        <input class='btn btn-primary' id="subscribe" type="submit" value="Đăng kí">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="margin-bottom-15"></div>
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <div class="col-md-6">
+                <h3>Cách giữ nhiệt độ, độ ẩm đất thích hợp cho rau củ phát triển</h3>
+                <ul>
+                    <li>Nhiệt độ, độ ẩm đất tốt để rau củ phát triển: từ 15 - 20 độ C, độ ẩm đất từ 60-80%</li>
+                    <li>Nhiệt độ trên 27 độ C, độ ẩm đất dưới 60%: chú ý tưới cây</li>
+                    <li>Nhiệt độ trên 35 độ C, độ ẩm đất trên 80%: che chắn cây trồng</li>
+                    <li>Nhiệt độ dưới 10 độ C, độ ẩm dưới 65%: giữ ấm cho cây, chú ý tưới cây</li>
+                </ul>
+            </div>
+
+            <div class="col-md-6">
+                <h3>Ảnh hưởng của nồng độ CO tới sức khỏe con người</h3>
+                <ul>
+                    <li>0 PPM Bình thường, không khí trong lành.</li>
+                    <li>9 PPM Mức độ CO trong nhà tối đa được đề nghị.</li>
+                    <li>200 PPM Choáng váng, naseau, fagitue, nhức đầu sau 2-3 giờ phơi nhiễm.</li>
+                    <li>400 PPM Nhức đầu và buồn nôn sau 1-2 giờ tiếp xúc.Life đe dọa trong 3 giờ.</li>
+                    <li>800 PPM Nhức đầu, buồn nôn, chóng mặt sau 45 phút; sụp đổ và bất tỉnh sau 1 giờ phơi nhiễm. Trong vòng 2-3 giờ.<br/></li>
+                    <li>1600 PPM Nhức đầu, buồn nôn, và chóng mặt sau 20 phút phơi nhiễm. Tử vong trong vòng 1-2 giờ.</li>
+                    <li>6400 PPM Tử vong trong vòng 30 phút.</li>
+                </ul>
+
+            </div>
+        </div>
+        <!-- /.container -->
+    </footer>
+    {{>slaveInfoModal}}
+    <button id="test">sdf</button>
+</template>
+<template name="slaveInfoModal">
+    <div class="modal fade" id="slaveInfoModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Modal example</h4>
+                </div>
+
+                <div class="modal-body">
+                    <p>A modal example.</p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<script>-->
+    <!--jQuery.noConflict();-->
+    <!--(function( $ ) {-->
+    <!--$(function() {-->
+    <!--// More code using $ as alias to jQuery-->
+    <!--$('.slave_full_name').click(function(){-->
+    <!--$('#modalID').modal('show');-->
+    <!--});-->
+    <!--});-->
+    <!--})(jQuery);-->
+    <!--</script>-->
+</template>
