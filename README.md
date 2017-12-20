@@ -21,7 +21,3 @@ node 'node js server.js'
 - Mở thêm 1 Terminal, nhập vào lần lượt các lệnh
 cd CHT_KIT
 meteor
-
-
-## Khóa học tất cả các sinh viên học theo
-https://courses.edx.org/courses/course-v1:USMx+STV1.1x+2T2017_2/course/
