@@ -1,5 +1,4 @@
-# int3117-2017
-Hệ thống cảnh báo nhiệt độ, độ ẩm và nồng độ khí CO
+# Hệ thống cảnh báo nhiệt độ, độ ẩm và nồng độ khí CO
 
 ## Nguyên liệu
 ### Client
